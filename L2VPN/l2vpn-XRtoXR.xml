@@ -1,0 +1,57 @@
+<config-template xmlns="http://tail-f.com/ns/config/1.0">
+ <devices xmlns="http://tail-f.com/ns/ncs">
+  <device tags="nocreate">
+   <name>{$DEVICE}</name>
+   <config>
+    <l2vpn xmlns="http://tail-f.com/ned/cisco-ios-xr" tags="merge">
+     <xconnect>
+      <group>
+       <name>{$CUSTOMER}</name>
+       <p2p>
+        <name>{$SERVICE}</name>
+        <neighbor>
+         <address>{$REMOTE-IP}</address>
+         <pw-id>{$PW-ID}</pw-id>
+        </neighbor>
+        <interface>
+         <name>GigabitEthernet{$INTERFACE-ID}</name>
+        </interface>
+       </p2p>
+      </group>
+     </xconnect>
+    </l2vpn>
+    <interface xmlns="http://tail-f.com/ned/cisco-ios-xr">
+     <GigabitEthernet>
+      <id>{$INTERFACE-ID}</id>
+      <l2transport tags="merge">
+      </l2transport>
+     </GigabitEthernet>
+    </interface>
+    <l2vpn xmlns="http://tail-f.com/ned/cisco-ios-xr" tags="merge">
+     <xconnect>
+      <group>
+       <name>{$CUSTOMER}</name>
+       <p2p>
+        <name>{$SERVICE}</name>
+        <neighbor>
+         <address>{$REMOTE-IP}</address>
+         <pw-id>{$PW-ID}</pw-id>
+        </neighbor>
+        <interface>
+         <name>GigabitEthernet{$INTERFACE-ID}</name>
+        </interface>
+       </p2p>
+      </group>
+     </xconnect>
+    </l2vpn>
+    <interface xmlns="http://tail-f.com/ned/cisco-ios-xr">
+     <GigabitEthernet>
+      <id>{$INTERFACE-ID}</id>
+      <l2transport tags="merge">
+      </l2transport>
+     </GigabitEthernet>
+    </interface>
+   </config>
+  </device>
+ </devices>
+</config-template>
